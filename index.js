@@ -89,7 +89,7 @@ function sendMessageInputListener() {
 }
 
 function populateChatWindowWithMessages(messages) {
-  for (let i = 0; i < messages.length; i++) {
+  for (let i = messages.length - 1; i >= 0; i--) {
     const message = messages[i];
     $('#users').prepend($('<p></p>').text(message.senderId));
     $('#messages').prepend($('<p></p>').text(message.text));
