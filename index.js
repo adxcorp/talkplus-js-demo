@@ -91,8 +91,8 @@ function sendMessageInputListener() {
 function populateChatWindowWithMessages(messages) {
   for (let i = messages.length - 1; i >= 0; i--) {
     const message = messages[i];
-    $('#users').prepend($('<p></p>').text(message.senderId));
-    $('#messages').prepend($('<p></p>').text(message.text));
+    $('#users').append($('<p></p>').text(message.senderId));
+    $('#messages').append($('<p></p>').text(message.text));
     $('#timestamps').append($('<p></p>').text(new Date(message.createdAt).toLocaleTimeString()));
   }
 }
