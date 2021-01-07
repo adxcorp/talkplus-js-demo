@@ -7,7 +7,7 @@ $(document).ready(function () {
   reset();
 
   client = new TalkPlus.Client({appId: APP_ID});
-  client.on('message', function (payload) {
+  client.on('event', function (payload) {
     const parsedPayload = JSON.parse(payload);
     addMessage(parsedPayload.message);
   });
