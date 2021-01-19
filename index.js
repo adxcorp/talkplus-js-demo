@@ -91,7 +91,7 @@ function sendMessageInputListener() {
 function populateChatWindowWithMessages(messages) {
   for (let i = messages.length - 1; i >= 0; i--) {
     const message = messages[i];
-    $('#users').append($('<p></p>').text(message.senderId));
+    $('#users').append($('<p></p>').text(message.userId));
     $('#messages').append($('<p></p>').text(message.text));
     $('#timestamps').append($('<p></p>').text(new Date(message.createdAt).toLocaleTimeString()));
   }
@@ -103,14 +103,14 @@ function addMessageText(messageText) {
       return alert(err);
     }
 
-    $('#users').append($('<p></p>').text(data.message.senderId));
+    $('#users').append($('<p></p>').text(data.message.userId));
     $('#messages').append($('<p></p>').text(messageText));
     $('#timestamps').append($('<p></p>').text(new Date(data.message.createdAt).toLocaleTimeString()));
   });
 }
 
 function addMessage(messageObj) {
-  $('#users').append($('<p></p>').text(messageObj.senderId));
+  $('#users').append($('<p></p>').text(messageObj.userId));
   $('#messages').append($('<p></p>').text(messageObj.text));
   $('#timestamps').append($('<p></p>').text(new Date(messageObj.createdAt).toLocaleTimeString()));
 }
