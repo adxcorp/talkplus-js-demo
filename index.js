@@ -9,7 +9,9 @@ $(document).ready(function () {
   client = new TalkPlus.Client({appId: APP_ID});
   client.on('event', function (payload) {
     const parsedPayload = JSON.parse(payload);
-    addMessage(parsedPayload.message);
+    if (parsedPayload.type === 'message') {
+      addMessage(parsedPayload.message);
+    }
   });
 
   setupUsernameInputEventListener();
