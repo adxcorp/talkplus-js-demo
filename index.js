@@ -80,7 +80,7 @@ function setupUsernameInputEventListener() {
 }
 
 function sendMessageInputListener() {
-  $('#enter').keyup((e) => {
+  $('#enter').keypress((e) => {
     if (e.keyCode === 13) {
       const messageText = $('#enter').val();
       $('#enter').val('');
