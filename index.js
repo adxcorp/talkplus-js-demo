@@ -8,9 +8,8 @@ $(document).ready(function () {
 
   client = new TalkPlus.Client({appId: APP_ID});
   client.on('event', function (payload) {
-    const parsedPayload = JSON.parse(payload);
-    if (parsedPayload.type === 'message') {
-      addMessage(parsedPayload.message);
+    if (payload.type === 'message') {
+      addMessage(payload.message);
     }
   });
 
