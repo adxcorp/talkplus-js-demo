@@ -35,7 +35,7 @@ function setupUsernameInputEventListener() {
     $('#username-input').val('');
 
     // login anonymously
-    client.loginAnonymous({userId: username, username: username}, function (errResp, data) {
+    client.loginAnonymous({userId: generateRandomId(), username: username}, function (errResp, data) {
       if (errResp) {
         return alert(JSON.stringify(errResp));
       }
@@ -92,7 +92,7 @@ function sendMessageInputListener() {
 function populateChatWindowWithMessages(messages) {
   for (let i = messages.length - 1; i >= 0; i--) {
     const message = messages[i];
-    $('#users').append($('<p></p>').text(message.userId));
+    $('#users').append($('<p></p>').text(message.username));
     $('#messages').append($('<p></p>').text(message.text));
     $('#timestamps').append($('<p></p>').text(new Date(message.createdAt).toLocaleTimeString()));
   }
@@ -104,18 +104,28 @@ function addMessageText(messageText) {
       return alert(err);
     }
 
-    $('#users').append($('<p></p>').text(data.message.userId));
+    $('#users').append($('<p></p>').text(data.message.username));
     $('#messages').append($('<p></p>').text(messageText));
     $('#timestamps').append($('<p></p>').text(new Date(data.message.createdAt).toLocaleTimeString()));
   });
 }
 
 function addMessage(messageObj) {
-  $('#users').append($('<p></p>').text(messageObj.userId));
+  $('#users').append($('<p></p>').text(messageObj.username));
   $('#messages').append($('<p></p>').text(messageObj.text));
   $('#timestamps').append($('<p></p>').text(new Date(messageObj.createdAt).toLocaleTimeString()));
 }
 
 function reset() {
   $('#username-input').val('');
+}
+
+function generateRandomString() {
+  return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+}
+
+function generateRandomId() {
+  return generateRandomString() + '-' + generateRandomString() + '-' + generateRandomString();
 }
