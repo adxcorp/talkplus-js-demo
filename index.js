@@ -1,5 +1,5 @@
 const APP_ID = '3ee30362-8459-4ff8-b69c-091be04cfd7a';
-const DEMO_CHANNEL_ID = 'demo channel';
+const DEMO_CHANNEL_ID = 'demo_channel';
 
 let client;
 
