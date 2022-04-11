@@ -79,14 +79,15 @@ function setupUsernameInputEventListener() {
 }
 
 function sendMessageInputListener() {
-  $('#enter').keypress((e) => {
-    if (e.keyCode === 13) {
-      const messageText = $('#enter').val();
-      $('#enter').val('');
+	$(document).on('keypress', '#enter', function (e) {
+		if (e.keyCode === 13) {
+			e.preventDefault();
+			const messageText = $('#enter').val();
+			$('#enter').val('');
 
-      addMessageText(messageText);
-    }
-  });
+			addMessageText(messageText);
+		}
+	});
 }
 
 function populateChatWindowWithMessages(messages) {
